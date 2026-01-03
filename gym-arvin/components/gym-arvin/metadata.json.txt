@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Arvin Reps Gym",
+  "description": "A premium dark-themed gym website featuring professional services, schedules, and an integrated AI Personal Trainer powered by Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
