@@ -8,7 +8,10 @@ If someone asks about the gym, mention we are located at 741 Bear Mt Blvd and of
 Always encourage safe practices and celebrate small wins.`;
 
 export async function getTrainerResponse(prompt: string): Promise<string> {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Use a fallback to prevent build errors if the environment variable is missing
+  const apiKey = (process.env as any).API_KEY || "";
+  
+  const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
@@ -26,4 +29,3 @@ export async function getTrainerResponse(prompt: string): Promise<string> {
     return "I'm currently helping another member on the floor. Let's get back to your goals in a moment!";
   }
 }
-
