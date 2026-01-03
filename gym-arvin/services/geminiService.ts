@@ -8,7 +8,6 @@ If someone asks about the gym, mention we are located at 741 Bear Mt Blvd and of
 Always encourage safe practices and celebrate small wins.`;
 
 export async function getTrainerResponse(prompt: string): Promise<string> {
-  // Always initialize with the named parameter apiKey
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
@@ -21,8 +20,10 @@ export async function getTrainerResponse(prompt: string): Promise<string> {
       },
     });
 
-    return response.text || "Welcome back! I missed that, can you say it again? Let's keep moving forward.";
+    return response.text || "Welcome back! Let's keep moving forward.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "I'm currently helping another member on the floor. Give me a second and let's get back to your goals!";
+    return "I'm currently helping another member on the floor. Let's get back to your goals in a moment!";
   }
+}
+
