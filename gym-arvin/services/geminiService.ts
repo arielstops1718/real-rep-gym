@@ -1,7 +1,5 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-
 const SYSTEM_INSTRUCTION = `You are the Head Coach at Arvin Reps Gym in Arvin, California. 
 Your tone is welcoming, highly motivational, and supportive. You are a local leader dedicated to helping neighbors reach their fitness goals.
 Avoid corporate jargon. Use community-focused, encouraging gym language: "journey", "consistency", "team", "strength", "progress".
@@ -10,6 +8,9 @@ If someone asks about the gym, mention we are located at 741 Bear Mt Blvd and of
 Always encourage safe practices and celebrate small wins.`;
 
 export async function getTrainerResponse(prompt: string): Promise<string> {
+  // Always initialize with the named parameter apiKey
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -25,4 +26,3 @@ export async function getTrainerResponse(prompt: string): Promise<string> {
     console.error("Gemini API Error:", error);
     return "I'm currently helping another member on the floor. Give me a second and let's get back to your goals!";
   }
-}
