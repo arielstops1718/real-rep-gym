@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import Services from './components/Services';
 import Memberships from './components/Memberships';
 import Hours from './components/Hours';
@@ -26,6 +27,10 @@ const App: React.FC = () => {
       <main>
         <section id="home">
           <Hero />
+        </section>
+
+        <section id="about" className="py-24 bg-zinc-950">
+          <About />
         </section>
 
         <section id="services" className="py-24 bg-zinc-900/50">
